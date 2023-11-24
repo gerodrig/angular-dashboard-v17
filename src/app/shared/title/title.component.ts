@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-title',
@@ -7,11 +7,16 @@ import { Component } from '@angular/core';
   imports: [
     CommonModule,
   ],
-  templateUrl: './title.component.html',
+  template: `
+    <h1 class="mb-5 text-3xl font-bold">{{title}}</h1> 
+  `,
   styles: `
     :host {
       display: block;
     }
   `,
 })
-export class TitleComponent { }
+export class TitleComponent { 
+  @Input({required: true}) title!:string;
+
+}

@@ -1,1 +1,56 @@
-<p>control-flow works!</p>
+
+<!-- <h1 class="mb-5 text-3xl font-bold">Control Flow</h1> -->
+<app-title title="Control Flow" />
+
+<section class="grid grid-cols-1 gap-3 md:grid-cols-2">
+  <!-- ngIf @if -->
+  <div class="p-10 bg-white rounded shadow">
+    <h2 class="mb-5 text-2xl font-bold">if: {{ showContent() }}</h2>
+
+    <button
+      class="px-4 py-2 text-white bg-blue-500 rounded"
+      (click)="toggleContent()"
+    >
+      Click me!
+    </button>
+
+    @if(showContent()){
+    <p class="mt-5 text-gray-500">Benito se fue de vacaciones</p>
+    } @else {
+    <p class="mt-5 text-gray-500">Benito stayed home</p>
+    }
+  </div>
+  <!-- switch @switch -->
+  <div class="p-10 bg-white rounded shadow">
+    <h2 class="mb-5 text-3xl font-bold">{{ grade() }}</h2>
+    @switch(grade()){ @case('A'){
+    <p>Grade above 90</p>
+    } @case('B'){
+    <p>Grade above 80</p>
+    } @case('C'){
+    <p>Grade above 70</p>
+    } @case('D'){
+    <p>Grade above 60</p>
+    } @default{
+    <p>Grade below 60</p>
+    } }
+  </div>
+
+  <!-- ngfor @for -->
+  <div class="p-10 bg-white rounded shadow">
+    <h2 class="mb-5 text-3xl font-bold">Frameworks</h2>
+
+    <ul>
+      @for (framework of frameworks(); track frameworks; let i = $index, first = $first, last = $last, even = $even, odd = $odd, count = $count) { 
+        <li [class]="{
+            'bg-red-100': even && !first && !last,
+            'bg-green-100': odd && !first && !last,
+            'bg-purple-100': first || last,  
+        }">
+            <span class="font-bold">{{ i + 1 }}/{{count}}. </span>
+            <span>{{ framework }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

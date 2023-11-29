@@ -1,1 +1,93 @@
-<p>defer-options works!</p>
+<app-title title="Defer Triggers" />
+
+<section>
+  <h1 class="text-xl">Interactions</h1>
+  <hr class="my-2" />
+
+  @defer(on interaction){
+
+  <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
+    <span>On Interaction</span>
+  </app-heavy-loaders-fast>
+
+  } @placeholder {
+  <div class="w-full h-20 bg-purple-100">Click on div</div>
+  }
+</section>
+
+<section>
+  <hr class="my-2" />
+
+  <button
+    #btnInteraction
+    class="p-2 mb-2 text-white transition-all bg-blue-500 rounded p2 hover:bg-blue-700"
+  >
+    Click me
+  </button>
+
+  @defer(on interaction(btnInteraction)){
+
+  <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
+    <span>On Interaction</span>
+  </app-heavy-loaders-fast>
+
+  } @placeholder {
+  <div class="w-full h-20 bg-purple-100">Click on div</div>
+  }
+</section>
+
+<section>
+  <hr class="my-2" />
+
+  @defer(on hover){
+
+  <app-heavy-loaders-fast cssClass="bg-orange-500 h-20">
+    <span>On Interaction on Hover</span>
+  </app-heavy-loaders-fast>
+
+  } @placeholder {
+  <div class="w-full h-20 bg-purple-100">Hover on div</div>
+  }
+</section>
+
+<section>
+  <hr class="my-2" />
+
+  @defer(on immediate){
+
+  <app-heavy-loaders-fast cssClass="bg-orange-500 h-20">
+    <span>On Immediate</span>
+  </app-heavy-loaders-fast>
+
+  } @placeholder {
+  <div class="w-full h-20 bg-purple-100">Div loaded immediately</div>
+  }
+</section>
+
+<section>
+  <hr class="my-2" />
+
+  @defer(on timer(2000)){
+
+  <app-heavy-loaders-fast cssClass="bg-green-500 h-20">
+    <span>On Timer loaded after 2 seconds</span>
+  </app-heavy-loaders-fast>
+
+  } @placeholder {
+  <div class="w-full h-20 bg-purple-100">On Timer (2s)</div>
+  }
+</section>
+
+<section>
+  <hr class="my-2" />
+
+  @defer(on hover; prefetch on idle){
+
+  <app-heavy-loaders-fast cssClass="bg-green-500 h-20">
+    <span>On hover, idle</span>
+  </app-heavy-loaders-fast>
+
+  } @placeholder {
+  <div class="w-full h-20 bg-purple-100">Hover and Idle</div>
+  }
+</section>
